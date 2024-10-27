@@ -9,6 +9,7 @@ export default class HolbertonCourse {
     this._students = students;
   }
   // getters and setters
+
   get name() {
     return this._name;
   }
