@@ -3,9 +3,9 @@ function getResponseFromApi() {
     const success = true;
 
     if (success) {
-      resolve("Yayyy!");
+      resolve('Yayyy!');
     } else {
-      reject(new Error("Failed to get response."));
+      reject(new Error('Failed to get response.'));
     }
   });
 }
