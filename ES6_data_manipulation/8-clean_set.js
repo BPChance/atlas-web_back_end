@@ -1,5 +1,5 @@
 function cleanSet(set, startString) {
-  if (typeof startString !== 'sring' || startString.length === 0) {
+  if (typeof startString !== 'string' || startString.length === 0) {
     return '';
   }
 
