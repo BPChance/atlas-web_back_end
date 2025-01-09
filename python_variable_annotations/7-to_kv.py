@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-""" type annotation function that takes a str, and an int or float and returns a tuple """
+""" type annotated function that takes a str, and an int or float and returns a tuple """
 
 
 from typing import Union
