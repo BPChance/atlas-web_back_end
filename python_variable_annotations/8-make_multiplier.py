@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""type annotated function that takes a float and
+"""
+type annotated function that takes a float and
 returns a function that multiplies it by a float
 """
 
