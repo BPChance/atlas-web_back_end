@@ -2,7 +2,8 @@
 """ asynchronous coroutine that waits for a delay and returns it """
 
 
-import random, asyncio
+import random
+import asyncio
 
 
 async def wait_random(max_delay: int = 10) -> float:
