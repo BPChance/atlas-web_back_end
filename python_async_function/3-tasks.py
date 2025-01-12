@@ -5,6 +5,10 @@
 import asyncio
 wait_r = __import__('0-basic_async_syntax').wait_random
 
+
 def task_wait_random(max_delay: int) -> asyncio.Task:
-    """ a function that takes max_delay:int and returns a asyncio.Task """
+    """
+    a function that creates and returns
+    a asyncio.Task that runs wait_r coroutine
+    """
     return asyncio.create_task(wait_r(max_delay))
