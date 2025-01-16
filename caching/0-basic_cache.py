@@ -5,9 +5,9 @@
 from base_caching import BaseCaching
 
 class BasicCache(BaseCaching):
+    """ BasicCache class that inherits from BaseCaching """
     def put(self, key, item):
         """
-        BasicCache which inherits from BaseCaching
         adds a key value pair to the cache
         """
         if key is None or item is None:
