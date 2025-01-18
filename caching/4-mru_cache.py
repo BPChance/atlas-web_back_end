@@ -16,7 +16,7 @@ class MRUCache(BaseCaching):
         if key is None or item is None:
             return
 
-        if key in self.usage_order:
+        if key in self.cache_data:
             self.usage_order.remove(key)
 
         #update cache with new item and mark it recently used
