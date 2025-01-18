@@ -16,10 +16,11 @@ class MRUCache(BaseCaching):
         if key is None or item is None:
             return
 
-        self.cache_data[key] = item
-
         if key in self.usage_order:
             self.usage_order.remove(key)
+        self.usage_order.append(key)
+
+        self.cache_data[key] = item
         self.usage_order.append(key)
 
         if len(self.cache_data) > BaseCaching.MAX_ITEMS:
