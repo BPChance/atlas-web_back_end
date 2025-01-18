@@ -7,12 +7,12 @@ from base_caching import BaseCaching
 
 class FIFOCache(BaseCaching):
     """ FIFOCache class that inherits from BaseCaching """
-    
+
     def __init__(self):
         """ initialize FIFO class """
         super().__init__()
         self.keys_order = []
-    
+
     def put(self, key, item):
         """ add a key value pair to the cache """
         if key is None or item is None:
