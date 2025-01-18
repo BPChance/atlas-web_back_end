@@ -19,14 +19,14 @@ class MRUCache(BaseCaching):
         if key in self.cache_data:
             self.usage_order.remove(key)
 
-        #update cache with new item and mark it recently used
-        self.cache_data[key] = item
-        self.usage_order.append(key)
-
-        if len(self.cache_data) > BaseCaching.MAX_ITEMS:
+        if len(self.cache_data) >= BaseCaching.MAX_ITEMS:
             mru_key = self.usage_order.pop()
             del self.cache_data[mru_key]
             print(f"DISCARD: {mru_key}")
+
+        #update cache with new item and mark it recently used
+        self.cache_data[key] = item
+        self.usage_order.append(key)
 
     def get(self, key):
         """ gets an item from the cache by key """
