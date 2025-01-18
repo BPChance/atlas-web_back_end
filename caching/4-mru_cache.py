@@ -24,7 +24,7 @@ class MRUCache(BaseCaching):
             del self.cache_data[mru_key]
             print(f"DISCARD: {mru_key}")
 
-        #update cache with new item and mark it recently used
+        # update cache with new item and mark it recently used
         self.cache_data[key] = item
         self.usage_order.append(key)
 
@@ -33,7 +33,7 @@ class MRUCache(BaseCaching):
         if key is None or key not in self.cache_data:
             return None
 
-        #move key to the end and mark it recently used
+        # move key to the end and mark it recently used
         self.usage_order.remove(key)
         self.usage_order.append(key)
 
