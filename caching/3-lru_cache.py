@@ -13,7 +13,7 @@ class LRUCache(BaseCaching):
         self.usage_order = []
 
     def put(self, key, item):
-        """"""
+        """ add an item to the cache """
         if key is None or item is None:
             return
 
