@@ -15,7 +15,7 @@ class LIFOCache(BaseCaching):
         """ adds an item to the cache """
         if key is None or item is None:
             return
-        
+
         if key in self.cache_data:
             del self.cache_data[key]
 
