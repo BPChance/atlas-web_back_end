@@ -35,6 +35,7 @@ class Server:
             dataset = self.dataset()
             return dataset[start_index:end_index] if start_index < len(dataset) else []
 
+
 def index_range(page: int, page_size: int) -> tuple:
     """ calculate start and end indexes for page and page size """
     start_index = (page - 1) * page_size
