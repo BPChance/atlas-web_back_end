@@ -42,6 +42,7 @@ class Server:
         return self.__indexed_dataset
 
     def get_hyper_index(self, index: int = None, page_size: int = 10) -> Dict:
+        """ get paginated data from the indexed dataset """
         assert index is not None and 0 <= index < \
             len(self.indexed_dataset()), "index out of range."
 
