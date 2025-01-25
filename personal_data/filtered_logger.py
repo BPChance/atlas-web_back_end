@@ -3,9 +3,10 @@
 
 
 import re
+from typing import List
 
 
-def filter_datum(fields, redaction, message, separator):
+def filter_datum(fields: List[str], redaction: str, message: str, separator: str) -> str:
     """ returns the log message obfuscated """
     # pattern for matching fields
     pattern = r"({})=[^{}]+".format("|".join(re.escape(field) for field in fields), re.escape(separator))
