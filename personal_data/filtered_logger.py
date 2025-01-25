@@ -8,7 +8,7 @@ import csv
 from typing import List
 
 
-PII_FIELDS = ("email", "phone", "ssn", "password", "ip")
+PII_FIELDS = ("name", "phone", "ssn", "password", "ip")
 
 
 class RedactingFormatter(logging.Formatter):
