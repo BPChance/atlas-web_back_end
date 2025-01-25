@@ -48,11 +48,11 @@ def filter_datum(
 
 def get_logger() -> logging.Logger:
     """ creates and configures a logger for handling sensitive data """
-    user_data = logging.getLogger("user_data")
-    user_data.setLevel(logging.INFO)
-    user_data.propagate = False
+    logger = logging.getLogger("user_data")
+    logger.setLevel(logging.INFO)
+    logger.propagate = False
     handler = logging.StreamHandler()
     formatter = RedactingFormatter(PII_FIELDS)
     handler.setFormatter(formatter)
-    user_data.addHandler(handler)
-    return user_data
+    logger.addHandler(handler)
+    return logger
