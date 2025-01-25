@@ -46,6 +46,7 @@ def filter_datum(
     )
     return re.sub(pattern, r"\1={}".format(redaction), message)
 
+
 def get_logger() -> logging.Logger:
     """ creates and configures a logger for handling sensitive data """
     logger = logging.getLogger("user_data")
