@@ -5,7 +5,16 @@
 import re
 import logging
 import csv
+import os
 from typing import List
+import mysql.connector
+from mysql.connector.connection import MySQLConnection
+
+
+PERSONAL_DATA_DB_USERNAME = os.getenv('PERSONAL_DATA_DB_USERNAME' ,'root')
+PERSONAL_DATA_DB_PASSWORD = os.getenv('PERSONAL_DATA_DB_PASSWORD' ,'')
+PERSONAL_DATA_DB_HOST = os.getenv('PERSONAL_DATA_DB_HOST' ,'localhost')
+PERSONAL_DATA_DB_NAME = os.getenv('PERSONAL_DATA_DB_NAME' ,'name')
 
 
 PII_FIELDS = ("name", "email", "ssn", "phone", "password")
@@ -57,3 +66,12 @@ def get_logger() -> logging.Logger:
     handler.setFormatter(formatter)
     logger.addHandler(handler)
     return logger
+
+def get_db() -> MySQLConnection:
+    """ connect mysql db """
+    return mysql.connector.connect(
+        user=PERSONAL_DATA_DB_USERNAME,
+        password=PERSONAL_DATA_DB_PASSWORD,
+        host=PERSONAL_DATA_DB_HOST,
+        database=PERSONAL_DATA_DB_NAME
+    )
