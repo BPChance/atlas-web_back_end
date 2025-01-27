@@ -49,7 +49,7 @@ def before_request_handler():
     """
     if auth is None:
         return
-    
+
     excluded_paths = [
         '/api/v1/status/',
         '/api/v1/unauthorized/',
@@ -58,7 +58,7 @@ def before_request_handler():
 
     if not auth.require_auth(request.path, excluded_paths):
         return
-    
+
     auth_header = auth.authorization_header(request)
     if auth_header is None:
         abort(401)
