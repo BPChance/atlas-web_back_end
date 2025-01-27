@@ -69,7 +69,7 @@ def get_logger() -> logging.Logger:
 
 
 def get_db() -> MySQLConnection:
-    """ connect mysql db """
+    """ establishes and returns a connection to the personal data database """
     return mysql.connector.connect(
         user=PERSONAL_DATA_DB_USERNAME,
         password=PERSONAL_DATA_DB_PASSWORD,
