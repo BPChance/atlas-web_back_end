@@ -67,16 +67,13 @@ def before_request_handler():
         return
 
     auth_header = auth.authorization_header(request)
-    if auth_header is None:
+    session_cookie = auth.session_cookie(request)
+    if auth_header is None and session_cookie is None:
         abort(401)
 
     request.current_user = auth.current_user(request)
     if request.current_user is None:
         abort(403)
-
-    session_cookie = auth.session_cookie(request)
-    if session_cookie is None:
-        abort(401)
 
 
 if __name__ == "__main__":
