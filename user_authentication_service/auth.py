@@ -14,6 +14,18 @@ class Auth:
     def __init__(self):
         self._db = DB()
 
+    def _hash_password(self, password: str) -> bytes:
+        """
+        hash a pass using bcrypt and
+        return salted hash as bytes
+        """
+        if not isinstance(password, str):
+            raise TypeError("Password must be string")
+
+        salt = bcrypt.gensalt()
+        hashed_password = bcrypt.hashpw(password.encode('utf-8'), salt)
+
+        return hashed_password
     
     def register_user(self, email: str, password: str) -> User:
         """ register a user in the DB """
@@ -27,16 +39,3 @@ class Auth:
         hashed_password = self._hash_password(password)
         new_user = self._db.add_user(email=email, hashed_password=hashed_password)
         return new_user
-
-def _hash_password(self, password: str) -> bytes:
-    """
-    hash a pass using bcrypt and
-    return salted hash as bytes
-    """
-    if not isinstance(password, str):
-        raise TypeError("Password must be string")
-
-    salt = bcrypt.gensalt()
-    hashed_password = bcrypt.hashpw(password.encode('utf-8'), salt)
-
-    return hashed_password
