@@ -15,7 +15,7 @@ class Auth:
     def __init__(self):
         self._db = DB()
 
-    def _hash_password(password: str) -> bytes:
+    def _hash_password(self, password: str) -> bytes:
         """
         hash a pass using bcrypt and
         return salted hash as bytes
