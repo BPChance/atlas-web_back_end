@@ -58,7 +58,10 @@ class DB:
         """ updates the user """
         user = self.find_user_by(id=user_id)
 
-        valid_attributes = ['email', 'hashed_password', 'session_id', 'reset_token']
+        valid_attributes = ['email',
+                            'hashed_password',
+                            'session_id',
+                            'reset_token']
         for key in kwargs:
             if key not in valid_attributes:
                 raise ValueError(f"Invalid attribute: {key}")
