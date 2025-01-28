@@ -3,7 +3,6 @@
 
 
 import bcrypt
-from bcrypt import hashpw, gensalt
 from db import DB
 from user import User
 
