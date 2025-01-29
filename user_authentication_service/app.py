@@ -15,6 +15,7 @@ def index() -> str:
     """ returns a JSON payload """
     return jsonify({"message": "Bienvenue"})
 
+
 @app.route("/users", methods=["POST"])
 def users() -> str:
     """ register new user """
