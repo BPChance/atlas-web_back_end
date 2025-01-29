@@ -76,3 +76,32 @@ def get_db() -> MySQLConnection:
         host=PERSONAL_DATA_DB_HOST,
         database=PERSONAL_DATA_DB_NAME
     )
+
+
+def main() -> None:
+    """ retrieve and log all records with sensitive fields """
+    logger = get_logger()
+    # finally block cleanup
+    db = None
+
+    try:
+        db = get_db()
+        cursor = db.cursor()
+        cursor.execute("SELECT * FROM users;")
+        rows = cursor.fetchall()
+
+        for row in rows:
+            message = (
+                f"name={row[0]}; email={row[1]}; phone={row[2]}; "
+                f"ssn={row[3]}; password={row[4]}; ip={row[5]}; "
+                f"last_login={row[6]}; user_agent={row[7]}"
+            )
+            # logger to redact PII fields
+            logger.info(message)
+
+    finally:
+        cursor.close()
+        db.close()
+
+if __name__ == "__main__":
+    main()
