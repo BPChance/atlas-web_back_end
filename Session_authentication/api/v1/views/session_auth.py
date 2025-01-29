@@ -34,3 +34,12 @@ def login():
     response.set_cookie(auth.session_cookie_name(), session_id)
     session_name = os.getenv('SESSION_NAME')
     return response
+
+@app_views.route('/auth_session/logout', methods=['DELETE'], strict_slashes=False)
+def logout():
+    """ logs out user by destroying session """
+    from api.v1.app import auth
+    destroyed = auth.destroy_session(request)
+    if not destroyed:
+        abort(404)
+    return jsonify({}), 200
