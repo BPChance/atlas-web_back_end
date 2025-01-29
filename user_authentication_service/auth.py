@@ -63,6 +63,7 @@ class Auth:
         self._db.update_user(user.id, session_id=session_id)
         return session_id
 
-    def _generate_uuid(self) -> str:
-        """ return a string representation of a new UUID """
-        return str(uuid.uuid4())
+
+def _generate_uuid(self) -> str:
+    """ return a string representation of a new UUID """
+    return str(uuid.uuid4())
