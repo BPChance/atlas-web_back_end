@@ -5,6 +5,7 @@
 from flask import request, jsonify, abort
 from api.v1.views import app_views
 from models.user import User
+import os
 
 
 @app_views.route('/auth_session/login', methods=['POST'], strict_slashes=False)
@@ -29,7 +30,7 @@ def login():
     # import here cuz i dont want no problems
     from api.v1.app import auth
     session_id = auth.create_session(user.id)
-
     response = jsonify(user.to_json())
     response.set_cookie(auth.session_cookie_name(), session_id)
+    session_name = os.getenv('SESSION_NAME')
     return response
