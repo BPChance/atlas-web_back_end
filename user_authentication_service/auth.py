@@ -5,6 +5,7 @@
 import bcrypt
 from db import DB
 from user import User
+import uuid
 
 
 class Auth:
@@ -26,7 +27,7 @@ class Auth:
         hashed_password = bcrypt.hashpw(password.encode('utf-8'), salt)
 
         return hashed_password
-    
+
     def register_user(self, email: str, password: str) -> User:
         """ register a user in the DB """
         try:
@@ -39,12 +40,17 @@ class Auth:
         hashed_password = self._hash_password(password)
         new_user = self._db.add_user(email=email, hashed_password=hashed_password)
         return new_user
-    
+
     def valid_login(self, email: str, password: str) -> bool:
         """ checks that user login is valid """
         try:
             user = self._db.find_user_by(email=email)
         except Exception:
             return False
-        
+
         return bcrypt.checkpw(password.encode('utf-8'), user.hashed_password)
+
+
+def _generate_uuid(self) -> str:
+    """ return a string representation of a new UUID """
+    return str(uuid.uuid4())
