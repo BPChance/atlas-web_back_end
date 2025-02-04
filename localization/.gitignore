@@ -1,0 +1,14 @@
+# venv
+venv/
+.env
+
+# compiled files
+__pycache__/
+*.pyc
+*.pyo
+
+# Babel translation files
+translations/**/messages.mo
+
+*.log
+.DS_Store
