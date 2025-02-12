@@ -20,7 +20,7 @@ class Cache:
         return key
 
     def get(
-            self, key: str, fn: Optional[callable[[bytes], any]] = None
+            self, key: str, fn: Optional[callable[[bytes], Any]] = None
     ) -> Any:
         """ retrieve data from redis """
         data = self._redis.get(key)
