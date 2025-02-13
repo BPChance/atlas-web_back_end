@@ -52,7 +52,9 @@ def replay(method: Callable) -> None:
     #display the history
     print(f"{method.__qualname__} was called {call_count} times:")
     for input_args, output in zip(inputs, outputs):
-        print(f"{method.__qualname__}(*{input_args.decode('utf-8')}) -> {output.decode('utf-8')}")
+        print(f"{method.__qualname__}(*{input_args.decode('utf-8')}) -> "
+              f"{output.decode('utf-8')}"
+        )
 
 
 class Cache:
@@ -79,11 +81,11 @@ class Cache:
         if fn is not None:
             return fn(data)
         return data
-    
+
     def get_str(self, key: str) -> Optional[str]:
         """ retrieve a str from redis """
         return self.get(key, lambda d: d.decode("utf-8"))
-    
+
     def get_int(self, key: str) -> Optional[int]:
         """ retrieve an int from redis """
         return self.get(key, int)
