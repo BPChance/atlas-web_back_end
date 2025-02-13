@@ -2,9 +2,22 @@
 """ caching system using redis """
 
 
+import functools
 import redis
 import uuid
 from typing import Union, Optional, Any, Callable
+
+
+def count_calls(method: Callable) -> Callable:
+    """ counts how many times a method is called """
+    key = method.__qualname__
+
+    @functools.wraps(method)
+    def wrapper(self, *args, **kwargs) -> Any:
+        """ increments the count and call the method """
+        self._redis.incr(key)
+        return method(self, *args, **kwargs)
+    return wrapper
 
 
 class Cache:
@@ -13,6 +26,7 @@ class Cache:
         self._redis = redis.Redis()
         self._redis.flushdb()
 
+    @count_calls
     def store(self, data: Union[str, bytes, int, float]) -> str:
         """ store data with random key using redis """
         key = str(uuid.uuid4())
