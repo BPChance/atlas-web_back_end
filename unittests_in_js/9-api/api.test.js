@@ -25,3 +25,26 @@ describe('Index page', function () {
       });
   });
 });
+
+describe('Cart page', function () {
+  it('should return correct status code when id is a number', function (done) {
+    chai
+      .request('http://localhost:7865')
+      .get('/cart/123')
+      .end((err, res) => {
+        expect(res).to.have.status(200);
+        expect(res.text).to.equal('Payment methods for cart 123\n');
+        done();
+      });
+  });
+
+  it('should return 404 when id is not a number', function (done) {
+    chai
+      .request('http://localhost:7865')
+      .get('/cart/abc')
+      .end((err, res) => {
+        expect(res).to.have.status(404);
+        done();
+      });
+  });
+});
